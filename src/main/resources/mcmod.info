@@ -1,0 +1,16 @@
+[
+{
+  "modid": "jepb",
+  "name": "Just Enough Pattern Banners",
+  "description": "Add a category to JEI displaying items craftable with banners",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Lorexe"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["JEI"]
+}
+]
