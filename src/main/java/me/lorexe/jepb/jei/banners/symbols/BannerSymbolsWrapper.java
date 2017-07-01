@@ -21,13 +21,10 @@ public class BannerSymbolsWrapper extends BlankRecipeWrapper {
 	
 	private final ItemStack input;
 	private final String patternID;
-	private final ModelBanner bannerModel = new ModelBanner();
 	
 	public BannerSymbolsWrapper(RecipeBanner recipe) {
 		this.input = recipe.getCraftingStack();
 		this.patternID = recipe.getPatternID();
-		
-		this.bannerModel.bannerStand.showModel = true;
 	}
 
 	@Override
@@ -38,10 +35,10 @@ public class BannerSymbolsWrapper extends BlankRecipeWrapper {
 	@Override
 	public void drawInfo(Minecraft mc, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
 		TileEntityBanner teBanner = (TileEntityBanner) ((BlockBanner)Blocks.STANDING_BANNER).createTileEntity(null, Blocks.STANDING_BANNER.getDefaultState());
-		teBanner.setItemValues(BannerUtil.makeBanner(patternID));
+		teBanner.setItemValues(BannerUtil.makeBanner(patternID), false);
 		ResourceLocation bannerTexture = BannerTextures.BANNER_DESIGNS.getResourceLocation(teBanner.getPatternResourceLocation(), teBanner.getPatternList(), teBanner.getColorList());
 		if(bannerTexture != null) {
-			mc.renderEngine.bindTexture(bannerTexture);
+			mc.getTextureManager().bindTexture(bannerTexture);
 			drawTexturedModalRect(50, 0, 0, 2, 2, 39, 78, 0.008f, 0.008f);
 		}
 	}

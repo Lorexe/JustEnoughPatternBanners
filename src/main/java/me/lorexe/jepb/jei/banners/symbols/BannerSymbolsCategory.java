@@ -18,7 +18,7 @@ public class BannerSymbolsCategory extends BlankRecipeCategory {
 	public BannerSymbolsCategory(IGuiHelper helper) {
 		localizedName = I18n.format(Constants.langBannerSymbolsCategory);
 
-		background = helper.createDrawable(new ResourceLocation(Constants.MODID, "textures/gui/bannerSymbolsBackground.png"), 0, 0, 100, 100);
+		background = helper.createDrawable(new ResourceLocation(Constants.MODID, "textures/gui/banner_symbols_background.png"), 0, 0, 100, 100);
 	}
 	
 	@Override
@@ -42,6 +42,11 @@ public class BannerSymbolsCategory extends BlankRecipeCategory {
 		
 		layout.getItemStacks().init(0, true, 4, 4);
 		layout.getItemStacks().set(0, ingr.getInputs(ItemStack.class).get(0));
+	}
+
+	@Override
+	public String getModName() {
+		return this.localizedName;
 	}
 	
 }

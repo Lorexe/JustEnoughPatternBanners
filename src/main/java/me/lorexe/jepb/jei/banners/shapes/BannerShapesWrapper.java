@@ -15,6 +15,7 @@ import net.minecraft.block.BlockBanner;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBanner;
 import net.minecraft.client.renderer.BannerTextures;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.init.Blocks;
@@ -27,14 +28,10 @@ public class BannerShapesWrapper extends BlankRecipeWrapper {
 	
 	private final List<ItemStack> inputs;
 	private final String patternID;
-	private final ModelBanner bannerModel = new ModelBanner();
 	
 	public BannerShapesWrapper(RecipeBanner recipe) {
 		
-		this.patternID = recipe.getPatternID();
-		
-		this.bannerModel.bannerStand.showModel = true;
-		
+		this.patternID = recipe.getPatternID();	
 		this.inputs = new ArrayList<ItemStack>();
 		
 		ItemStack dye = new ItemStack(Items.DYE, 1, JEPatternBanners.proxy.patternColor);
@@ -59,10 +56,10 @@ public class BannerShapesWrapper extends BlankRecipeWrapper {
 	@Override
 	public void drawInfo(Minecraft mc, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
 		TileEntityBanner teBanner = (TileEntityBanner) ((BlockBanner)Blocks.STANDING_BANNER).createTileEntity(null, Blocks.STANDING_BANNER.getDefaultState());
-		teBanner.setItemValues(BannerUtil.makeBanner(patternID));
+		teBanner.setItemValues(BannerUtil.makeBanner(patternID), false);
 		ResourceLocation bannerTexture = BannerTextures.BANNER_DESIGNS.getResourceLocation(teBanner.getPatternResourceLocation(), teBanner.getPatternList(), teBanner.getColorList());
 		if(bannerTexture != null) {
-			mc.renderEngine.bindTexture(bannerTexture);
+			mc.getTextureManager().bindTexture(bannerTexture);
 			drawTexturedModalRect(82, 0, 0, 2, 2, 39, 78, 0.008f, 0.008f);
 		}
 	}
