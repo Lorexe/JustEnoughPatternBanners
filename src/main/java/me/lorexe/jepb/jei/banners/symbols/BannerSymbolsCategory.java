@@ -35,7 +35,12 @@ public class BannerSymbolsCategory extends BlankRecipeCategory {
 	public IDrawable getBackground() {
 		return this.background;
 	}
-
+	
+	@Override
+	public String getModName() {
+		return Constants.MODNAME;
+	}
+	
 	@Override
 	public void setRecipe(IRecipeLayout layout, IRecipeWrapper wrapper, IIngredients ingr) {
 		if(!(wrapper instanceof BannerSymbolsWrapper)) return;
@@ -43,10 +48,4 @@ public class BannerSymbolsCategory extends BlankRecipeCategory {
 		layout.getItemStacks().init(0, true, 4, 4);
 		layout.getItemStacks().set(0, ingr.getInputs(ItemStack.class).get(0));
 	}
-
-	@Override
-	public String getModName() {
-		return this.localizedName;
-	}
-	
 }

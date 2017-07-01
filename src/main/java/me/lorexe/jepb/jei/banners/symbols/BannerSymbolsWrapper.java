@@ -51,5 +51,5 @@ public class BannerSymbolsWrapper extends BlankRecipeWrapper {
 		tessellator.getBuffer().pos(x + w, y, z).tex((u + w) * f, v * f1).endVertex();
 		tessellator.getBuffer().pos(x, y, z).tex(u * f, v * f1).endVertex();
 		tessellator.draw();
-}
+	}
 }
