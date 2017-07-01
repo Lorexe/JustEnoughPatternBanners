@@ -4,10 +4,12 @@ import java.util.LinkedHashMap;
 
 import com.google.common.collect.ImmutableList.Builder;
 
+/*
 import blusunrize.immersiveengineering.api.ApiUtils;
 import blusunrize.immersiveengineering.api.tool.BulletHandler;
 import blusunrize.immersiveengineering.common.crafting.RecipeBannerAdvanced;
 import blusunrize.immersiveengineering.common.crafting.RecipeBannerAdvanced.*;
+*/
 import me.lorexe.jepb.jei.banners.RecipeBanner;
 import me.lorexe.jepb.jei.banners.shapes.RecipeShapesBanner;
 import me.lorexe.jepb.jei.banners.symbols.RecipeSymbolsBanner;
@@ -24,6 +26,7 @@ public class IEHandler implements IModHandler {
 	public static final ItemStack windMillAdv = null;
 	*/
 	public void register(Builder<RecipeShapesBanner> builderShapes, Builder<RecipeSymbolsBanner> builderSymbols) {
+		/*
 		builderSymbols.add(new RecipeSymbolsBanner("ie_wnd", windMill));
 		//builderSymbols.add(new RecipeSymbolsBanner("ie_wnd", windMillAdv));
 		builderSymbols.add(new RecipeSymbolsBanner("ie_twd", ApiUtils.createIngredientStack("plankTreatedWood").getExampleStack()));
@@ -36,5 +39,6 @@ public class IEHandler implements IModHandler {
 			builderSymbols.add(new RecipeSymbolsBanner("ie_wlfl", wolfpackCartridge));
 			builderSymbols.add(new RecipeSymbolsBanner("ie_wlf", wolfpackCartridge));
 		}
+		*/
 	}
 }
