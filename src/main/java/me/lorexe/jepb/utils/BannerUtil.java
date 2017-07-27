@@ -18,7 +18,7 @@ public class BannerUtil {
 		if(baseColor < 0 || baseColor > 15) baseColor = JEPatternBanners.proxy.baseColor;
 		if(patternColor < 0 || patternColor > 15) patternColor = JEPatternBanners.proxy.patternColor;
 		
-		ItemStack banner = new ItemStack(Items.BANNER);
+		ItemStack banner = new ItemStack(Items.BANNER, 1, baseColor);
 		
 		NBTTagCompound tags = banner.getTagCompound();
 		if(tags == null) {
@@ -28,7 +28,7 @@ public class BannerUtil {
 		
 		NBTTagCompound blockTag = new NBTTagCompound();
 		tags.setTag("BlockEntityTag", blockTag);
-		blockTag.setInteger("Base", baseColor);
+		//blockTag.setInteger("Base", baseColor);
 		
 		NBTTagList patternList = new NBTTagList();
 		blockTag.setTag("Patterns", patternList);
@@ -46,8 +46,9 @@ public class BannerUtil {
 	public static ItemStack makeBlank(int baseColor) {
 		if(baseColor < 0 || baseColor > 15) baseColor = JEPatternBanners.proxy.baseColor;
 		
-		ItemStack banner = new ItemStack(Items.BANNER);
+		ItemStack banner = new ItemStack(Items.BANNER, 1, baseColor);
 		
+		/*
 		NBTTagCompound tags = banner.getTagCompound();
 		if(tags == null) {
 			tags = new NBTTagCompound();
@@ -57,6 +58,7 @@ public class BannerUtil {
 		NBTTagCompound blockTag = new NBTTagCompound();
 		tags.setTag("BlockEntityTag", blockTag);
 		blockTag.setInteger("Base", baseColor);
+		*/
 		
 		return banner;
 	}

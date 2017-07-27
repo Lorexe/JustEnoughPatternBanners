@@ -18,8 +18,8 @@ public class BannerShapesCategory extends BlankRecipeCategory {
 	
 	public BannerShapesCategory(IGuiHelper helper) {
 		localizedName = I18n.format(Constants.langBannerShapesCategory);
-
-		background = helper.createDrawable(new ResourceLocation(Constants.MODID, "textures/gui/bannerShapesBackground.png"), 0, 0, 140, 100);
+		System.out.println(Constants.langBannerShapesCategory + " " + localizedName);
+		background = helper.createDrawable(new ResourceLocation(Constants.MODID, "textures/gui/banner_shapes_background.png"), 0, 0, 140, 100);
 	}
 	
 	@Override
@@ -38,6 +38,11 @@ public class BannerShapesCategory extends BlankRecipeCategory {
 	}
 
 	@Override
+	public String getModName() {
+		return Constants.MODNAME;
+	}
+
+	@Override
 	public void setRecipe(IRecipeLayout layout, IRecipeWrapper wrapper, IIngredients ingr) {
 		if(!(wrapper instanceof BannerShapesWrapper)) return;
 		
@@ -50,9 +55,5 @@ public class BannerShapesCategory extends BlankRecipeCategory {
 				guiItemStacks.set(index, ingr.getInputs(ItemStack.class).get(index));
 			}
 		}
-		
-		//layout.getItemStacks().init(0, true, 4, 4);
-		//layout.getItemStacks().set(0, ingr.getInputs(ItemStack.class).get(0));
 	}
-	
 }

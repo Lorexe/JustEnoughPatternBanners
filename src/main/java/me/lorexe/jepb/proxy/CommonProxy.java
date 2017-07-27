@@ -14,7 +14,7 @@ import me.lorexe.jepb.mods.IEHandler;
 import me.lorexe.jepb.mods.IModHandler;
 import me.lorexe.jepb.utils.Constants;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntityBanner.EnumBannerPattern;
+import net.minecraft.tileentity.BannerPattern;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -50,19 +50,17 @@ public class CommonProxy {
 		modHandlers = new HashMap<String, IModHandler>();
 		modHandlers.put("immersiveengineering", new IEHandler());
 		
-		
 		// Classic pattern minecraft
 		ImmutableList.Builder<RecipeShapesBanner> builderShapes = ImmutableList.builder();
 		ImmutableList.Builder<RecipeSymbolsBanner> builderSymbols = ImmutableList.builder();
-		for(EnumBannerPattern p : EnumBannerPattern.values()) {
-			if(p.hasValidCrafting() && !p.hasCraftingStack()) {
-				builderShapes.add(new RecipeShapesBanner(p.getPatternID(), p.getCraftingLayers()));
-			} else if(p.hasCraftingStack())
-				builderSymbols.add(new RecipeSymbolsBanner(p.getPatternID(), p.getCraftingStack()));
+		for(BannerPattern p : BannerPattern.values()) {
+			if(p.hasPattern() && !p.hasPatternItem()) {
+				builderShapes.add(new RecipeShapesBanner(p.getHashname(), p.getPatterns()));
+			} else if(p.hasPatternItem())
+				builderSymbols.add(new RecipeSymbolsBanner(p.getHashname(), p.getPatternItem()));
 		}
 		
-		
-		// Manage custom mods pattern...
+		// Manage custom mods pattern
 		for(Entry<String, IModHandler> entry : modHandlers.entrySet()) {
 		    String modID = entry.getKey();
 		    IModHandler handler = entry.getValue();
